@@ -1,0 +1,75 @@
+<configuration>
+
+
+
+    <appender name="QUARTZ_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/quartz.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.quartz" level="ERROR">
+          <appender-ref ref="QUARTZ_APPENDER"/>
+    </logger>
+
+    <appender name="ApiCallHandler_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/api_call_handler.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="apiCallHandlerLogger" level="ERROR">
+        <appender-ref ref="ApiCallHandler_appender"/>
+    </logger>
+
+
+    <appender name="BaseDataChannelAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/base_data_channel.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="BaseDataChannelLogger" level="ERROR">
+        <appender-ref ref="BaseDataChannelAppender"/>
+    </logger>
+
+
+    <appender name="telescopeclientAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/telescope_client.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="telescopeclientlogger" level="ERROR">
+        <appender-ref ref="telescopeclientAppender"/>
+    </logger>
+
+
+
+
+
+
+
+
+
+</configuration>

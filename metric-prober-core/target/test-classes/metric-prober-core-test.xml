@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd" >
+
+    <context:annotation-config />
+
+
+    <bean id="metricProberClient" class="com.vip.metricprobe.core.api.impl.MetricProberClientImpl">
+    </bean>
+
+    <bean id="metricCollectEngine" class="com.vip.metricprobe.core.engine.MetricCollectEngine"/>
+
+    <bean id="systemMetricValueCollector" class="com.vip.metricprobe.core.collector.SystemMetricValueCollector"/>
+
+    <bean id="componentMetricContextBuilder" class="com.vip.metricprobe.core.context.ComponentMetricContextBuilder"/>
+
+
+    <bean id="componentMetricContextContainer" class="com.vip.metricprobe.core.context.ComponentMetricContextContainer"/>
+
+    <bean id="scheduler" class="com.vip.metricprobe.core.schedule.QuartzScheduler"/>
+
+
+
+
+</beans>

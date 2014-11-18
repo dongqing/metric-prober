@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+    <!--api调用指标。-->
+	<bean id="apiCallMetric" class="com.vip.metricprobe.telescope.sdk.domain.APICallMetric">
+		<property name="api" value="className.methodName(argtype...)" />
+		<property name="id"
+			value="aWTmr43lqbRhcHDmtYvor5XmjqXlhaXmjIfmoIfmtojmga/lubPlj7BfTU1Q" />
+		<property name="key"
+			value="消息平台_MMP_a2V55q+N5am0YXBw5rWL6K+V5o6l5YWl5oyH5qCH5raI5oGv5bmz5Y+wX01NUA==" />
+		<property name="scanIntervalInMills" value="30000" />
+
+		<!--指标纬度 -->
+		<property name="dimensionList">
+			<list>
+				<bean class="com.vip.metricprobe.telescope.sdk.domain.TelescopeMetricDimension">
+					<property name="name" value="纬度1" />
+				</bean>
+				<bean class="com.vip.metricprobe.telescope.sdk.domain.TelescopeMetricDimension">
+					<property name="name" value="纬度2" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+    <!--api调用指标。-->
+	<bean id="apiCallMetric_2" class="com.vip.metricprobe.telescope.sdk.domain.APICallMetric">
+		<property name="api" value="className.methodName2(argtype...)" />
+		<property name="id"
+			value="aWTmr43lqbRhcHDmtYvor5XmjqXlhaXmjIfmoIfmtojmga/lubPlj7BfTU1Q123" />
+		<property name="key"
+			value="消息平台_123123MMP_a2V55q+N5am0YXBw5rWL6K+V5o6l5YWl5oyH5qCH5raI5oGv5bmz5Y+wX01NUA==" />
+		<property name="scanIntervalInMills" value="15000" />
+
+		<!--指标纬度 -->
+		<property name="dimensionList">
+			<list>
+                <bean class="com.vip.metricprobe.telescope.sdk.domain.TelescopeMetricDimension">
+                    <property name="name" value="纬度1" />
+				</bean>
+                <bean class="com.vip.metricprobe.telescope.sdk.domain.TelescopeMetricDimension">
+                    <property name="name" value="纬度2" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="apiCallMetrics" class="com.vip.metricprobe.telescope.sdk.domain.APICallMetrics">
+		<property name="apiCallMetricList">
+			<list>
+				<ref bean="apiCallMetric" />
+				<ref bean="apiCallMetric_2"/>
+			</list>
+		</property>
+	</bean>
+
+    <!--telescope的client配置。-->
+	<bean id="telescopeClientConfig" class="com.vip.metricprobe.telescope.sdk.config.TelescopeClientConfig">
+		<property name="pushUrl"
+			value="http://192.168.46.58:8090/DataAcceptor/data/pushDataTest.do" />
+	</bean>
+
+    <!--telescope的client -->
+	<bean id="telescopeclient" class="com.vip.metricprobe.telescope.sdk.client.TelescopeClient">
+		<property name="telescopeClientConfig" ref="telescopeClientConfig" />
+	</bean>
+</beans>
