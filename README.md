@@ -15,12 +15,8 @@ git clone git@github.com:dongqing/metric-prober.git
 mvn clean install -Dmaven.test.skip=true 
 
 3、添加maven依赖： 
-
-   <dependency>
-        <groupId>com.vip.metricprobe</groupId>
-        <artifactId>metric-prober-extend</artifactId>
-        <version>1.0-SNAPSHOT</version>
-  </dependency> 
+com.vip.metricprobe:metric-prober-extend:1.0-SNAPSHOT
+ 
   
 4、把metric-prober-extend/src/main/resources下的配置文件拷贝到应用的resources下面
 metric-prober-core/src/main/resources/下的配置文件拷贝到应用的resources下面
