@@ -25,15 +25,12 @@ metric-prober-core/src/main/resources/下的配置文件拷贝到应用的resour
 
 5、在宿主应用中启动spring容器，获取id="metricProberClient"的bean .
 metricProberClient 这个bean的使用可以参考MetricProberClientTest类。
-这个类主要用来处理宿主app的技术指标统计，比如:线程池的大小、队列的长度，
-统计的频率由用户设定
-统计指标的获取由回调函数处理
-统计结果的处理由监听器处理。 
+这个类主要用来处理宿主app的技术指标统计，比如:线程池的大小、队列的长度，统计的频率由用户设定,统计指标的获取由回调函数处理,统计结果的处理由监听器处理。 
 
 
 
 6、获取id="apiCallListener"的bean. 
-这个bean 主要处理api 调用到telescope系统的接入，实现了缓冲、aggregate，到telescope系统的定时推送。
+这个bean 主要处理api 调用到telescope系统的接入，实现了缓冲、aggregate、到telescope系统的定时推送。
 使用方法可以参考ApiCallListenerTest这个类。
 api指标的配置文件在telescope-sdk.xml中。
 
