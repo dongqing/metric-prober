@@ -118,6 +118,7 @@ public class TelescopeClient {
         if(isPushCorrect){
              logger.info("TelescopeClient.push(PushData pushData) {} success ", returnJSON);
         }
+
         return isPushCorrect;
     }
 

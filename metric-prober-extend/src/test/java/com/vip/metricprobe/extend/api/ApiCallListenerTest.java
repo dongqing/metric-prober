@@ -1,6 +1,5 @@
 package com.vip.metricprobe.extend.api;
 
-import com.vip.metricprobe.extend.BaseTestCase;
 import org.junit.Test;
 
 import javax.annotation.Resource;

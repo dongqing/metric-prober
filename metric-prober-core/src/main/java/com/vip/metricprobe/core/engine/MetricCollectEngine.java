@@ -151,8 +151,6 @@ public class MetricCollectEngine {
      * @param probeConfig
      */
     public void register(Component component , SystemMetric systemMetric , ProbeConfig probeConfig){
-
-        //构建一个上下文
         ComponentMetricContext context = componentMetricContextBuilder.build(component, systemMetric, probeConfig);
         componentMetricContextContainer.add(component, context);
 

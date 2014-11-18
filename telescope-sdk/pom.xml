@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
+    <packaging>jar</packaging>
     <artifactId>telescope-sdk</artifactId>
 
     <description>此模块放的是自己写的telescope的系统接入sdk ,因为sdk只提供了sample code</description>
