@@ -7,9 +7,9 @@
 	<bean id="apiCallMetric" class="com.vip.metricprobe.telescope.sdk.domain.APICallMetric">
 		<property name="api" value="className.methodName(argtype...)" />
 		<property name="id"
-			value="aWTmr43lqbRhcHDmtYvor5XmjqXlhaXmjIfmoIfmtojmga/lubPlj7BfTU1Q" />
+			value="" />
 		<property name="key"
-			value="消息平台_MMP_a2V55q+N5am0YXBw5rWL6K+V5o6l5YWl5oyH5qCH5raI5oGv5bmz5Y+wX01NUA==" />
+			value="" />
 		<property name="scanIntervalInMills" value="30000" />
 
 		<!--指标纬度 -->
@@ -29,9 +29,9 @@
 	<bean id="apiCallMetric_2" class="com.vip.metricprobe.telescope.sdk.domain.APICallMetric">
 		<property name="api" value="className.methodName2(argtype...)" />
 		<property name="id"
-			value="aWTmr43lqbRhcHDmtYvor5XmjqXlhaXmjIfmoIfmtojmga/lubPlj7BfTU1Q123" />
+			value="" />
 		<property name="key"
-			value="消息平台_123123MMP_a2V55q+N5am0YXBw5rWL6K+V5o6l5YWl5oyH5qCH5raI5oGv5bmz5Y+wX01NUA==" />
+			value="" />
 		<property name="scanIntervalInMills" value="15000" />
 
 		<!--指标纬度 -->
@@ -59,8 +59,7 @@
 
     <!--telescope的client配置。-->
 	<bean id="telescopeClientConfig" class="com.vip.metricprobe.telescope.sdk.config.TelescopeClientConfig">
-		<property name="pushUrl"
-			value="http://192.168.46.58:8090/DataAcceptor/data/pushDataTest.do" />
+        <property name="pushUrl"  value=""/>
 	</bean>
 
     <!--telescope的client -->

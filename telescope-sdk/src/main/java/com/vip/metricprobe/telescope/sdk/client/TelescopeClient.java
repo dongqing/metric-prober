@@ -129,58 +129,6 @@ public class TelescopeClient {
 
 
 
-    /**
-     * String url = "http://192.168.46.58:8090/DataAcceptor/data/pushDataTest.do";
-     HttpPost httpPost =  new HttpPost(url);
-
-     PushData pushData= new PushData();
-     pushData.setId("aWTmr43lqbRhcHDmtYvor5XmjqXlhaXmjIfmoIfmtojmga/lubPlj7BfTU1Q");
-     pushData.setKey("消息平台_MMP_a2V55q+N5am0YXBw5rWL6K+V5o6l5YWl5oyH5qCH5raI5oGv5bmz5Y+wX01NUA==");
-     pushData.setTimestamp(Calendar.getInstance().getTimeInMillis());
-     pushData.setValue(1d) ;
-
-     IndexEntry indexEntry = new IndexEntry() ;
-     indexEntry.setDimension("地域", "华南");
-     indexEntry.setDimension("主机", "主机IP ");
-     indexEntry.setValue(2d) ;
-
-     List<IndexEntry> indexEntryList = new ArrayList<IndexEntry>(1);
-     indexEntryList.add(indexEntry);
-     pushData.setIndex(indexEntryList);
-
-     String returnJSON =  JSONObject.toJSONString(pushData,true);
-     System.out.println("pushdata json :" +returnJSON) ;
-
-
-     StringEntity s = new StringEntity(returnJSON, "UTF-8");
-     s.setContentEncoding("UTF-8");
-     s.setContentType("application/json");
-     httpPost.setEntity(s);
-     System.out.println("entity:"+ s );
-
-     try {
-     CloseableHttpResponse closeableHttpResponse = httpClient.execute(httpPost);
-     try{
-     HttpEntity entity = closeableHttpResponse.getEntity();
-     System.out.println("repsonse content: " + EntityUtils.toString(entity)) ;
-
-     } finally{
-     closeableHttpResponse.close();
-     }
-
-     } catch (IOException e) {
-     e.printStackTrace();
-     }    finally{
-     try {
-     httpClient.close() ;
-     } catch (IOException e) {
-     e.printStackTrace();
-     }
-     }
-
-     return false;
-     */
-
 
 
 }
