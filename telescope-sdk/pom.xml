@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
     <artifactId>telescope-sdk</artifactId>
 
-    <description>此模块放的是自己写的telescope的系统接入sdk ,因为sdk只提供了sample code</description>
+    <description>此模块放的是telescope监控系统的接入sdk ,因为telescope系统本身只提供了sample code</description>
 
 
 
@@ -22,6 +22,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient-osgi</artifactId>

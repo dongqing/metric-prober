@@ -1,5 +1,6 @@
 package com.vip.metricprobe.core.schedule;
 
+import com.vip.metricprobe.core.CleanableResource;
 import com.vip.metricprobe.core.config.ProbeConfig;
 import com.vip.metricprobe.core.context.ComponentMetricContext;
 import com.vip.metricprobe.core.domain.Component;
@@ -9,7 +10,10 @@ import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Date;
 import java.util.concurrent.Callable;
 
 import static org.quartz.JobBuilder.newJob;
@@ -20,7 +24,9 @@ import static org.quartz.TriggerBuilder.newTrigger;
  *  使用Quartz进行任务调度。
  * Created by dongqingswt on 14-11-18.
  */
-public class QuartzScheduler implements  Scheduler {
+public class QuartzScheduler implements  Scheduler, CleanableResource {
+
+    private static final Logger logger  = LoggerFactory.getLogger(QuartzScheduler.class);
 
     private static final String JOB_GROUP_NAME = "jobGroup";
 
@@ -117,5 +123,18 @@ public class QuartzScheduler implements  Scheduler {
                 append("],[metric:").append(metric).append("]] ");
         return jobName.toString();
 
+    }
+
+    @Override
+    public void cleanResource() {
+
+        logger.info("QuartzScheduler.cleanResource() is called() at time: {}", new Date());
+
+        try {
+            this.scheduler.shutdown();
+        } catch (SchedulerException e) {
+
+            logger.error("QuartzScheduler.cleanResource()  catch  SchedulerException {}" , e);
+        }
     }
 }

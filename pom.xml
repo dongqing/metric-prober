@@ -13,9 +13,10 @@
         用于宿主服务器和外部监控系统的接入
     </description>
     <modules>
-        <module>metric-prober-core</module>    <!--系统指标采集， component的技术指标采集放在这里-->
-        <module>telescope-sdk</module>             <!--telescope系统的sdk, 因为telescope系统只提供了sample code ;-->
-        <module>metric-prober-extend</module>       <!-- 业务指标采集放在这里，提供缓冲，聚合计算，到外部系统的数据推送。-->
+        <module>metric-prober-core</module>
+        <module>telescope-sdk</module>
+        <module>metric-prober-extend</module>
+        <module>task-keeper</module>
     </modules>
 
     <build>

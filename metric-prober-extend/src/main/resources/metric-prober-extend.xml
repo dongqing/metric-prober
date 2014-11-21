@@ -3,6 +3,9 @@
 <beans>
     <import resource="telescope-sdk.xml"/>
 
+    <import resource="metric-prober-core.xml"/>
+
+
 
     <!--数据探测器，用于把不同的数据分发到不同的数据通道 。 每个通道对数据的处理方式不一样。-->
     <bean id="dataProber" class="com.vip.metricprobe.extend.probe.DefaultDataProber">
@@ -25,7 +28,7 @@
     </bean>
 
     <!--用于apiHandler 做数据的定时推送使用-->
-    <bean id="scheduler" class="com.vip.metricprobe.core.schedule.QuartzScheduler"/>
+    <!--<bean id="scheduler" class="com.vip.metricprobe.core.schedule.QuartzScheduler"/>-->
 
 
     <!--做api接口调用aggregate的处理器 。-->

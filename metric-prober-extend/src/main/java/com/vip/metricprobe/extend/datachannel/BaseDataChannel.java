@@ -1,6 +1,7 @@
 package com.vip.metricprobe.extend.datachannel;
 
 
+import com.vip.metricprobe.core.CleanableResource;
 import com.vip.metricprobe.extend.chain.HandlerChain;
 import com.vip.metricprobe.extend.domain.Data;
 import com.vip.metricprobe.extend.domain.DataFeature;
@@ -17,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * TODO　pipeline 数据队列满了以后  ，怎么持久化存储的问题。
  * Created by dongqingswt on 14-11-8.
  */
-public  class BaseDataChannel implements  DataChannel{
+public  class BaseDataChannel implements  DataChannel, CleanableResource {
 
     private static final Logger logger = LoggerFactory.getLogger("BaseDataChannelLogger");
 
@@ -41,11 +42,14 @@ public  class BaseDataChannel implements  DataChannel{
 
 	}
 
+    @Override
+    public void cleanResource() {
+
+        this.pipeline.shutdown();
+    }
 
 
-
-
-	/**
+    /**
 	 * 数据管道，数据通道接收到数据以后， 丢到数据管道中去。
 	 */
 	public interface Pipeline{
@@ -60,6 +64,13 @@ public  class BaseDataChannel implements  DataChannel{
 		 * @return
 		 */
 		public DataFeature getDataFeature();
+
+
+        /**
+         * 关闭管道 。
+         */
+        public void shutdown();
+
 
 	}
 
@@ -98,7 +109,12 @@ public  class BaseDataChannel implements  DataChannel{
 		public DataFeature getDataFeature() {
 			return this.dataFeature;
 		}
-	}
+
+        @Override
+        public void shutdown() {
+            dataHandlerTask.shutdown();
+        }
+    }
 
 	/**
 	 * 用于从PipelineGroup中选择一个Pipeline.
@@ -201,7 +217,14 @@ public  class BaseDataChannel implements  DataChannel{
 		public DataFeature getDataFeature() {
 			return null;
 		}
-	}
+
+        @Override
+        public void shutdown() {
+            for(Pipeline pipeline: pipelineList){
+                pipeline.shutdown();
+            }
+        }
+    }
 
 	/**
 	 * 轮询的方式从PipelineGroup中获取Pipeline,和Pipeline需要处理的数据无关。
@@ -257,11 +280,26 @@ public  class BaseDataChannel implements  DataChannel{
 
 		private HandlerChain handlerChain;
 
-		DataHandlerTask(BlockingQueue<Data> dataQueue, HandlerChain handlerChain){
+        private Thread thread;
+
+		DataHandlerTask(final BlockingQueue<Data> dataQueue, final HandlerChain handlerChain){
 			this.dataQueue = dataQueue;
 			this.handlerChain = handlerChain ; 
-			
-			
+			this.thread = new Thread( new Runnable(){
+                @Override
+                public void run() {
+                    Data data = null;
+                    for(;;){
+                        try {
+                            data = (Data) dataQueue.take();
+                            handlerChain.handle(data);
+                        } catch (InterruptedException e) {
+                            logger.error("DataHandlerTask handle data {} error",data,e );
+                        }
+                    }
+                }
+            });
+
 			
 		}
 
@@ -270,23 +308,14 @@ public  class BaseDataChannel implements  DataChannel{
          * 启动一个task, 这个task从关联的队列中获取数据并使用处理器链进行处理。
          */
 		public void startTask(){
-			new Thread( new Runnable(){
-				@Override
-				public void run() {
-					Data data = null;
-					for(;;){
-						try {
-							data = (Data) dataQueue.take();
-							handlerChain.handle(data);
-						} catch (InterruptedException e) {
-                            logger.error("DataHandlerTask handle data {} error",data,e );
-						}
-					}
-				}
-			}).start();
+			this.thread.start();
 		}
 
-	}
+        public void shutdown() {
+
+               // do no op ;
+        }
+    }
 
 
 

@@ -25,7 +25,7 @@ public class DataPushClient {
     public void push(final Map<String,Integer> apiCallResult) {
 
         for(final OuterSystemClient outerSystemClient: outerSystemClientList){
-					outerSystemClient.pushApiCall(apiCallResult);
+            outerSystemClient.pushApiCall(apiCallResult);
         }
 
 

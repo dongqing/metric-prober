@@ -95,7 +95,7 @@ public class MetricProberClientTest extends BaseTestCase {
 //        List<MetricValueListener> listenerList2 = new ArrayList<MetricValueListener>(1);
 //        listenerList2.add(listener2);
 //
-//
+//                                                                                                                    QuartzScheduler
 //        //设置component关心什么bizmetric,以probeConfig里面的时间间隔采集一次,获取metric的回调函数是什么
 //        metricProberClient.register(component2, new BizMetric(), probeConfig2,new GetMetricCallback(){
 //            @Override
@@ -122,7 +122,6 @@ public class MetricProberClientTest extends BaseTestCase {
 //
 
 
-        Thread.sleep(3000000);
 
     }
 

@@ -13,7 +13,7 @@
     <artifactId>metric-prober-core</artifactId>
 
 
-    <description>存放metricprober的一些核心组件</description>
+    <description>存放metricprober的一些核心组件  。目前实现了指标的采集和转发。</description>
 
 
     <dependencies>

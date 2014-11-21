@@ -13,7 +13,9 @@
     <artifactId>metric-prober-extend</artifactId>
 
     <description>
-        这个模块主要是利用metric-prober-core,data-channel ,telescope-sdk实现业务扩展。
+        这个模块主要是利用metric-prober-core ,telescope-sdk实现业务扩展，目前实现了api调用的
+        缓冲、聚合计算、到telescope监控系统的数据推送；可以通过简单的配置实现到其他系统的
+        数据推送。
     </description>
     <dependencies>
 
@@ -56,6 +58,7 @@
             <artifactId>spring-beans</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -77,6 +80,7 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 
