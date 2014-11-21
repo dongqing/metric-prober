@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>metric-prober</artifactId>
+        <groupId>com.vip.metricprobe</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>task-keeper</artifactId>
+
+
+    <description>
+         在业务中经常遇到这种场景，某一个任务第一次做失败了， 那么是立即放弃这个任务 ，
+        还是立即连续重试几次直到失败，还是把失败任务存起来，过一段时间（或者条件满足的时候）
+        再重试 。
+
+        基于这个场景，考虑写一个task-keeper ，以备今后类似的业务场景进行复用 。
+
+    </description>
+
+</project>
