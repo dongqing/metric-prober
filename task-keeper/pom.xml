@@ -17,7 +17,21 @@
         还是立即连续重试几次直到失败，还是把失败任务存起来，过一段时间（或者条件满足的时候）
         再重试 !
 
-        基于这个场景，考虑写一个task-keeper ，以备今后类似的业务场景进行复用 。
+        基于这个场景，写了一个task-keeper ，以备今后类似的业务场景进行复用 。
+
+        设计的思路是把任务的执行抽象成JobExecution ,每一个JobExecution定义了如何对Job进行执行 。
+        比如ImmediateJobExecution 表示立即执行任务。
+        RepeatJobWithIntervalJobExecution 表示以指定的时间间隔重复多少次任务直到成功，或者超过最大重试次数。
+        WaitUntilConditionOKJobExecution 表示一直等待直到条件满足时继续执行任务。
+
+        用户可以根据自己的需要， 写特定的任务执行逻辑。
+
+        然后把这些JobExecution组合成为一个类似有穷状态机的东东。
+
+
+
+
+
 
     </description>
 
